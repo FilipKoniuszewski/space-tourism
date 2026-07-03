@@ -1,0 +1,24 @@
+@use 'tokens' as *;
+
+// All slides share one grid cell so the container keeps the largest
+// image dimensions — no layout shift when switching tabs.
+.tab-images {
+  display: grid;
+
+  &__slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    pointer-events: none;
+
+    &.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-images__slide {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,193 @@
+@use 'tokens' as *;
+
+.technology {
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  padding-inline: 0;
+
+  .numbered-title {
+    padding-inline: 1.5rem;
+
+    @include tablet {
+      padding-inline: 2.5rem;
+      align-self: flex-start;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  &__image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      max-height: 19.375rem;
+      object-fit: cover;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 32rem;
+    padding-inline: 1.5rem;
+  }
+
+  &__numbers {
+    display: flex;
+    gap: 1rem;
+
+    button {
+      width: 2.5rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba($color-white, 0.25);
+      font-family: $font-serif;
+      font-size: 1rem;
+      color: $color-white;
+      transition:
+        border-color 350ms ease,
+        background-color 350ms ease,
+        color 350ms ease,
+        transform 400ms $ease-out-expo;
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          border-color: $color-white;
+          transform: scale(1.08);
+        }
+      }
+
+      &.is-active {
+        color: $color-dark;
+        background: $color-white;
+        border-color: $color-white;
+        transform: none;
+      }
+    }
+  }
+
+  &__heading {
+    font-family: $font-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    span {
+      display: block;
+      margin-bottom: 0.5625rem;
+      font-family: $font-sans-cond;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 2.36px;
+      text-transform: uppercase;
+      color: $color-accent;
+    }
+  }
+
+  &__description {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: $color-accent;
+  }
+
+  @include tablet {
+    &__image img {
+      max-height: 32.5rem;
+    }
+
+    &__numbers button {
+      width: 3.75rem;
+      font-size: 1.5rem;
+    }
+
+    &__heading {
+      font-size: 2.5rem;
+
+      span {
+        font-size: 1rem;
+        letter-spacing: 2.7px;
+      }
+    }
+
+    &__description {
+      font-size: 1rem;
+    }
+  }
+
+  @include desktop {
+    text-align: left;
+    padding-left: 10.3125rem;
+    padding-right: 0;
+
+    .numbered-title {
+      padding-inline: 0;
+    }
+
+    &__content {
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      margin-top: 2rem;
+    }
+
+    &__image {
+      width: 32rem;
+      flex-shrink: 0;
+
+      img {
+        max-height: none;
+        object-fit: contain;
+        margin-left: auto;
+      }
+    }
+
+    &__body {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 5rem;
+      max-width: none;
+      padding-inline: 0;
+    }
+
+    &__numbers {
+      flex-direction: column;
+      gap: 2rem;
+
+      button {
+        width: 5rem;
+        font-size: 2rem;
+      }
+    }
+
+    &__details {
+      max-width: 32rem;
+      padding-top: 1rem;
+    }
+
+    &__heading {
+      font-size: 3.5rem;
+
+      span {
+        margin-bottom: 1rem;
+      }
+    }
+
+    // Reserve space for the longest copy so the image and numbers
+    // don't shift when switching technologies.
+    &__description {
+      font-size: 1.125rem;
+      min-height: 12.125rem;
+    }
+  }
+}

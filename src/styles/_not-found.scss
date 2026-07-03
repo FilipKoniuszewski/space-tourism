@@ -1,0 +1,22 @@
+@use 'tokens' as *;
+
+.not-found {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    max-width: 24rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: $color-accent;
+  }
+}

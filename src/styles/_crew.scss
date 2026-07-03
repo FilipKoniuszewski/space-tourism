@@ -1,0 +1,201 @@
+@use 'tokens' as *;
+
+.crew {
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  padding-bottom: 0;
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 32rem;
+  }
+
+  &__role {
+    font-family: $font-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: rgba($color-white, 0.5);
+  }
+
+  &__name {
+    margin-top: 0.5rem;
+    font-family: $font-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  &__bio {
+    margin-top: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: $color-accent;
+    // Reserve space for the longest bio so tab switches don't reflow the layout.
+    min-height: 10.125rem;
+  }
+
+  &__dots {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+      width: 0.625rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba($color-white, 0.17);
+      transition:
+        background-color 350ms ease,
+        transform 400ms $ease-out-expo;
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background: rgba($color-white, 0.5);
+          transform: scale(1.2);
+        }
+      }
+
+      &.is-active {
+        background: $color-white;
+        transform: none;
+      }
+    }
+  }
+
+  &__image {
+    position: relative;
+    flex-shrink: 0;
+    // Full-bleed like the design — break out of page__main horizontal padding.
+    width: calc(100% + 3rem);
+    margin-inline: -1.5rem;
+    height: 26.875rem;
+    margin-top: auto;
+    margin-bottom: 0;
+    overflow: hidden;
+
+    // Absolute slides — hidden portraits must not widen/tall the frame (grid bug).
+    &.tab-images {
+      display: block;
+    }
+
+    .tab-images__slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+      max-width: none;
+      object-fit: contain;
+      object-position: bottom center;
+      // Fade the portrait's bottom edge into the background.
+      mask-image: linear-gradient(to bottom, black 85%, transparent);
+    }
+  }
+
+  @include tablet {
+    &__role {
+      font-size: 1.5rem;
+    }
+
+    &__name {
+      font-size: 2.5rem;
+    }
+
+    &__bio {
+      font-size: 1rem;
+      min-height: 11.25rem;
+    }
+
+    &__image {
+      width: calc(100% + 5rem);
+      margin-inline: -2.5rem;
+      height: 35rem;
+      margin-bottom: 0;
+    }
+  }
+
+  @include desktop {
+    text-align: left;
+    padding-bottom: 0;
+
+    &__content {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 4rem;
+    }
+
+    // Stretch to the image height and distribute: heading block floats
+    // in the upper half, dots anchor near the bottom (as in the design).
+    &__details {
+      align-items: flex-start;
+      align-self: stretch;
+      max-width: 40rem;
+    }
+
+    &__panel {
+      margin-top: auto;
+    }
+
+    &__role {
+      font-size: 2rem;
+    }
+
+    &__name {
+      font-size: 3.5rem;
+      white-space: nowrap;
+    }
+
+    &__bio {
+      min-height: 12.25rem;
+      font-size: 1.125rem;
+      max-width: 27.75rem;
+    }
+
+    &__dots {
+      margin-top: auto;
+      padding-bottom: 5.5rem;
+
+      button {
+        width: 0.9375rem;
+      }
+    }
+
+    &__image {
+      width: 31.25rem;
+      height: 36.5rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      flex-shrink: 0;
+      overflow: visible;
+
+      .tab-images__slide {
+        justify-content: center;
+      }
+
+      img {
+        height: auto;
+        max-height: 100%;
+        width: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}

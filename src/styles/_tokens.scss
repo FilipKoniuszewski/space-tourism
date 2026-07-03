@@ -1,0 +1,58 @@
+$color-dark: #0b0d17;
+$color-accent: #d0d6f9;
+$color-white: #ffffff;
+
+$font-serif: 'Bellefair', serif;
+$font-sans-cond: 'Barlow Condensed', sans-serif;
+$font-sans: 'Barlow', sans-serif;
+
+@mixin tablet {
+  @media (min-width: 48em) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 64em) {
+    @content;
+  }
+}
+
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+// Underline that grows from the center — hover at 50% opacity, active at 100%.
+@mixin hover-underline($active-selector: '.is-active') {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 3px;
+    background: $color-white;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition:
+      transform 400ms $ease-out-expo,
+      opacity 300ms ease;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::after {
+      opacity: 0.5;
+      transform: scaleX(1);
+    }
+  }
+
+  &:focus-visible::after {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
+
+  &#{$active-selector}::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
