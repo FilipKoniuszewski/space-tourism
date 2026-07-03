@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { assetUrl } from '../utils/assetUrl';
 import { routes } from '../routes';
 
 const Header = () => {
@@ -30,7 +31,7 @@ const Header = () => {
   return (
     <header className="header">
       <Link to="/" className="header__logo" onClick={() => setMenuOpen(false)}>
-        <img src="/assets/shared/logo.svg" alt="Space tourism logo" />
+        <img src={assetUrl('/assets/shared/logo.svg')} alt="Space tourism logo" />
       </Link>
 
       <button
@@ -42,7 +43,7 @@ const Header = () => {
       >
         <span className="sr-only">Menu</span>
         <img
-          src={menuOpen ? '/assets/shared/icon-close.svg' : '/assets/shared/icon-hamburger.svg'}
+          src={menuOpen ? assetUrl('/assets/shared/icon-close.svg') : assetUrl('/assets/shared/icon-hamburger.svg')}
           alt=""
         />
       </button>

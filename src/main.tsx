@@ -10,9 +10,11 @@ if (!rootEl) {
   throw new Error('Root element #root not found');
 }
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 createRoot(rootEl).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </StrictMode>,

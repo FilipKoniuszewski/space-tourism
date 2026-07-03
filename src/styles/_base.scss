@@ -98,24 +98,24 @@ a {
   @each $name in home, destination, crew, technology, not-found {
     &--#{$name} {
       @if $name == not-found {
-        background-image: url('/assets/home/background-home-mobile.jpg');
+        background-image: url('#{$asset-base}assets/home/background-home-mobile.jpg');
 
         @include tablet {
-          background-image: url('/assets/home/background-home-tablet.jpg');
+          background-image: url('#{$asset-base}assets/home/background-home-tablet.jpg');
         }
 
         @include desktop {
-          background-image: url('/assets/home/background-home-desktop.jpg');
+          background-image: url('#{$asset-base}assets/home/background-home-desktop.jpg');
         }
       } @else {
-        background-image: url('/assets/#{$name}/background-#{$name}-mobile.jpg');
+        background-image: url('#{$asset-base}assets/#{$name}/background-#{$name}-mobile.jpg');
 
         @include tablet {
-          background-image: url('/assets/#{$name}/background-#{$name}-tablet.jpg');
+          background-image: url('#{$asset-base}assets/#{$name}/background-#{$name}-tablet.jpg');
         }
 
         @include desktop {
-          background-image: url('/assets/#{$name}/background-#{$name}-desktop.jpg');
+          background-image: url('#{$asset-base}assets/#{$name}/background-#{$name}-desktop.jpg');
         }
       }
     }

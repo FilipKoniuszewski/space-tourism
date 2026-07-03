@@ -2,6 +2,9 @@ $color-dark: #0b0d17;
 $color-accent: #d0d6f9;
 $color-white: #ffffff;
 
+// Must match `base` in vite.config.ts (GitHub Pages subpath).
+$asset-base: '/space-tourism/';
+
 $font-serif: 'Bellefair', serif;
 $font-sans-cond: 'Barlow Condensed', sans-serif;
 $font-sans: 'Barlow', sans-serif;
