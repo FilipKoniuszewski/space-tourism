@@ -1,0 +1,42 @@
+@use 'tokens' as *;
+
+.route-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  display: grid;
+  place-items: center;
+  background: rgba($color-dark, 0.36);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  pointer-events: all;
+
+  &__animation {
+    width: min(14rem, 72vw);
+    height: min(14rem, 72vw);
+    background: transparent;
+
+    canvas {
+      background: transparent !important;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-loader {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    animation: route-loader-fade 900ms ease-in-out infinite;
+  }
+}
+
+@keyframes route-loader-fade {
+  0%,
+  100% {
+    background: rgba($color-dark, 0.5);
+  }
+
+  50% {
+    background: rgba($color-dark, 0.38);
+  }
+}

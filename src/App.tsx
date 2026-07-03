@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
+import RouteLoader from './components/RouteLoader';
 import { getPageKey, getRouteByPath } from './routes';
 
 const Home = lazy(() => import('./pages/Home'));
@@ -27,7 +28,7 @@ const App = () => {
       </a>
       <Header />
       <ErrorBoundary>
-        <Suspense fallback={null}>
+        <Suspense fallback={<RouteLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/destination" element={<Destination />} />
