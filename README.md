@@ -29,13 +29,19 @@ Open [http://localhost:5173](http://localhost:5173).
 
 ## Deployment
 
-This app uses client-side routing (`BrowserRouter`). Configure your host to serve `index.html` for all routes (e.g. Netlify `_redirects`, Vercel rewrites, or nginx `try_files`).
+### GitHub Pages
+
+Live site: **https://filipkoniuszewski.github.io/space-tourism/**
+
+Pushes to `main` deploy automatically via GitHub Actions (`.github/workflows/deploy.yml`).
+
+This app uses client-side routing (`BrowserRouter`). The build copies `index.html` to `404.html` so direct links like `/destination` work on GitHub Pages.
+
+For other hosts, configure SPA fallback to `index.html` (Netlify `_redirects`, Vercel rewrites, nginx `try_files`, etc.).
 
 ```bash
 npm run build
 ```
-
-Deploy the contents of `dist/`.
 
 ## Project structure
 
